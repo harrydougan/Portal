@@ -36,7 +36,7 @@ namespace PRTL
         }
         void OnJumpButtonPressed()
         {
-            if (CanJump())
+            if (CanJump() && Controller.VerticalSpeed <= 0f)
             {
                 Jump();
 

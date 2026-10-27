@@ -7,7 +7,9 @@ namespace PRTL
     {
         public CharacterController CharacterController;
 
-        public bool Grounded => CharacterController.isGrounded;
+        public float DistanceToGround = 0f;
+
+        public bool Grounded => DistanceToGround <= 0.2f;
 
         #region Input Handling
         public Vector2 MoveInput { get; set; }
