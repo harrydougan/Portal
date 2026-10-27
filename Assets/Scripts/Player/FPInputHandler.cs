@@ -25,6 +25,12 @@ namespace PRTL
         {
             Controller.MoveInput = input.Player.Move.ReadValue<Vector2>();
             Controller.LookInput = input.Player.Look.ReadValue<Vector2>();
+
+            if (input.Player.Jump.WasPressedThisFrame())
+            {
+                Controller.JumpButtonPressed?.Invoke();
+            }
+
         }
         #endregion
     }

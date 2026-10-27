@@ -21,7 +21,11 @@ namespace PRTL
         bool HasMoveInput => Controller.MoveInput != Vector2.zero;
 
         #region Unity Methods
-        public void Update()
+        private void Start()
+        {
+            Controller.SetVerticalSpeed += SetVerticalSpeed;
+        }
+        private void Update()
         {
 
             if (HasMoveInput) //Acceleration
@@ -47,6 +51,8 @@ namespace PRTL
 
             CharacterController.Move(motion);
 
+            Controller.VerticalSpeed = verticalVelocity.y;
+
         }
         #endregion
 
@@ -56,13 +62,18 @@ namespace PRTL
             {
                 verticalVelocity += Physics.gravity * gravityScale * Time.deltaTime;
             }
-            else
+            else if (verticalVelocity.y <=0f) // Lets us jump whilst grounded
             {
                 verticalVelocity = Vector3.down * 4f; // Stick to ground
             }
 
             motion += verticalVelocity * Time.deltaTime;
             
+        }
+
+        void SetVerticalSpeed(float verticalSpeed)
+        {
+            verticalVelocity.y = verticalSpeed;
         }
     }
 }
