@@ -8,7 +8,7 @@ namespace PRTL
         public CharacterController CharacterController;
 
         public float DistanceToGround = 0f;
-
+        public float DistanceToCeiling = 100f;
         public bool Grounded => DistanceToGround <= 0.2f;
         public bool IsCrouching { get; set; }
         public System.Func<bool> CanStandUp;

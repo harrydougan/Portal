@@ -14,7 +14,9 @@ namespace PRTL
 
         [Header("Crouch Interaction")]
         [SerializeField] bool canJumpWhileCrouched = true;
+        [SerializeField] float minJumpClearance = 0.3f;
         float lastGroundedTime = 0f;
+        float standingHeight;
 
         #region Unity Methods
         private void Start()
@@ -34,29 +36,38 @@ namespace PRTL
         bool CanJump()
         {
             float airTime = Time.time - lastGroundedTime;
-            bool withinCoyoteTime = airTime <= coyoteTime;
 
-            if (!withinCoyoteTime) return false;
+            if (airTime > coyoteTime) return false;
 
             // If the player is crouching, check crouch-jump rules and ceiling clearance
             if (Controller.IsCrouching)
             {
                 if (!canJumpWhileCrouched) return false;
-
-                // Block jump if low ceiling directly overhead
-                if (Controller.CanStandUp !=null && !Controller.CanStandUp.Invoke())
+                
+                float standUpClearance = (standingHeight - CharacterController.height) + minJumpClearance;
+                if (Controller.DistanceToCeiling <= standUpClearance)
                 {
                     return false;
                 }
-
             }
+            else
+            {
+                // When standing, check if there is immediate headroom above the player
+                if (Controller.DistanceToCeiling <= minJumpClearance)
+                {
+                    return false;
+                }
+            }
+
             return true;
         }
         void OnJumpButtonPressed()
         {
             if (CanJump() && Controller.VerticalSpeed <= 0f)
             {
-                if (Controller.IsCrouching)
+                // Only stand up if the player isn't holding crouch AND there is full jump headroom
+                float fullStandAndJumpRoom = (standingHeight - CharacterController.height) + jumpHeight;
+                if (Controller.IsCrouching && !Controller.CrouchInput && Controller.DistanceToCeiling > fullStandAndJumpRoom)
                 {
                     Controller.IsCrouching = false;
                     Controller.Uncrouched?.Invoke();

@@ -60,6 +60,12 @@ namespace PRTL
 
         void ApplyGravity(ref Vector3 motion) 
         {
+            // If player hits head on a ceiling while moving upward, stop upward momentum.
+            if (Controller.DistanceToCeiling <= 0.1f && verticalVelocity.y > 0f)
+            {
+                verticalVelocity.y = 0f;
+            }
+
             if (!Controller.Grounded) // Grounded checks to see if player is on the ground to prevent infinite verticalVelocity scaling.
             {
                 verticalVelocity += Physics.gravity * gravityScale * Time.deltaTime;
