@@ -25,6 +25,7 @@ namespace PRTL
         {
             Controller.MoveInput = input.Player.Move.ReadValue<Vector2>();
             Controller.LookInput = input.Player.Look.ReadValue<Vector2>();
+            Controller.CrouchInput = input.Player.Crouch.IsPressed();
 
             if (input.Player.Jump.WasPressedThisFrame())
             {
@@ -34,6 +35,11 @@ namespace PRTL
             if (input.Player.Crouch.WasPressedThisFrame())
             {
                 Controller.CrouchButtonPressed?.Invoke();
+            }
+
+            if (input.Player.Crouch.WasReleasedThisFrame())
+            {
+                Controller.CrouchButtonReleased?.Invoke();
             }
 
         }

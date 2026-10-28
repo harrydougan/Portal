@@ -11,6 +11,9 @@ namespace PRTL
         [SerializeField] float jumpHeight = 1f;
         [SerializeField] float gravityScale = 3f;
         [SerializeField] float coyoteTime = 0.1f;
+
+        [Header("Crouch Interaction")]
+        [SerializeField] bool canJumpWhileCrouched = true;
         float lastGroundedTime = 0f;
 
         #region Unity Methods
@@ -31,15 +34,35 @@ namespace PRTL
         bool CanJump()
         {
             float airTime = Time.time - lastGroundedTime;
+            bool withinCoyoteTime = airTime <= coyoteTime;
 
-            return airTime <= coyoteTime;
+            if (!withinCoyoteTime) return false;
+
+            // If the player is crouching, check crouch-jump rules and ceiling clearance
+            if (Controller.IsCrouching)
+            {
+                if (!canJumpWhileCrouched) return false;
+
+                // Block jump if low ceiling directly overhead
+                if (Controller.CanStandUp !=null && !Controller.CanStandUp.Invoke())
+                {
+                    return false;
+                }
+
+            }
+            return true;
         }
         void OnJumpButtonPressed()
         {
             if (CanJump() && Controller.VerticalSpeed <= 0f)
             {
-                Jump();
+                if (Controller.IsCrouching)
+                {
+                    Controller.IsCrouching = false;
+                    Controller.Uncrouched?.Invoke();
+                }
 
+                Jump();
                 Controller.Jumped.Invoke();
             }
         }

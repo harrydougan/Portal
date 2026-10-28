@@ -8,6 +8,7 @@ namespace PRTL
     {
         [Header("Movement Parameters")]
         [SerializeField] float maxSpeed = 12f;
+        [SerializeField] float crouchSpeedMultiplier = 0.5f;
 
         [Space(20f)]
         [SerializeField] float acceleration = 80f;
@@ -32,7 +33,8 @@ namespace PRTL
             {
                 var targetVelocity = Controller.MoveInput.x * Root.right + Controller.MoveInput.y * Root.forward;
 
-                targetVelocity *= maxSpeed;
+                float currentMaxSpeed = Controller.IsCrouching ? maxSpeed * crouchSpeedMultiplier : maxSpeed;
+                targetVelocity *= currentMaxSpeed;
 
                 float maxDelta = acceleration * Time.deltaTime;
 
