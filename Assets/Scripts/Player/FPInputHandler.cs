@@ -31,6 +31,11 @@ namespace PRTL
                 Controller.JumpButtonPressed?.Invoke();
             }
 
+            if (input.Player.Crouch.WasPressedThisFrame())
+            {
+                Controller.CrouchButtonPressed?.Invoke();
+            }
+
         }
         #endregion
     }

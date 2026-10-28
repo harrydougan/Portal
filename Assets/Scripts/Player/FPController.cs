@@ -16,6 +16,8 @@ namespace PRTL
         public Vector2 LookInput { get; set; }
 
         public UnityAction JumpButtonPressed;
+
+        public UnityAction CrouchButtonPressed;
         #endregion
 
         public float VerticalSpeed = 0f;
@@ -26,12 +28,16 @@ namespace PRTL
 
         public UnityEvent<float> Landed;
 
+        public UnityEvent Crouched;
+
         #region Unity Methods
         private void Awake()
         {
             Jumped.AddListener(() => Debug.Log("Player Jumped"));
 
             Landed.AddListener((vs) => Debug.Log($"Player Landed {vs} "));
+
+            Crouched.AddListener(() => Debug.Log("Player Crouched"));
         }
         #endregion
     }
