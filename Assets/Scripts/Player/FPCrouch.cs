@@ -11,11 +11,16 @@ namespace PRTL
             Controller.CrouchButtonPressed += OnCrouchButtonPressed;
         }
 
-        void OnCrouchButtonPressed() 
+        void OnCrouchButtonPressed()
         {
             Debug.Log("Crouched");
 
-            CharacterController.height = CharacterController.height / 2f;
+            Crouch();
+        }
+
+        void Crouch()
+        {
+            CharacterController.height = CharacterController.height * 2f;
         }
     }
 }
