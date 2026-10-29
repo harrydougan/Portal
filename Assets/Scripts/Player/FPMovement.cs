@@ -1,6 +1,7 @@
 ﻿
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 namespace PRTL
 {
@@ -25,6 +26,7 @@ namespace PRTL
         private void Start()
         {
             Controller.SetVerticalSpeed += SetVerticalSpeed;
+            Controller.SetHorizontalVelocity += SetHorizontalVelocity;
         }
         private void Update()
         {
@@ -82,6 +84,11 @@ namespace PRTL
         void SetVerticalSpeed(float verticalSpeed)
         {
             verticalVelocity.y = verticalSpeed;
+        }
+
+        void SetHorizontalVelocity(Vector3 horizontalVelocity)
+        {
+            this.horizontalVelocity = horizontalVelocity;
         }
     }
 }

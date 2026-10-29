@@ -5,6 +5,8 @@ namespace PRTL
 {
     public class UIManager : MonoBehaviour
     {
+        [SerializeField] GameEventBus gameEventBus;
+        
         #region FSM
         enum EState
         {
@@ -30,10 +32,12 @@ namespace PRTL
             if (state == EState.Play)
             {
                 SetCursorVisible(false);
+                gameEventBus.SetPlayerInputEnabled?.Invoke(true);
             }
             else if (state == EState.Pause)
             {
                 SetCursorVisible(true);
+                gameEventBus.SetPlayerInputEnabled?.Invoke(false);
             }
         }
 
@@ -45,7 +49,7 @@ namespace PRTL
 
         #region Unity Methods
 
-        private void Awake()
+        private void Start ()
         {
             ChangeState(EState.Play);
         }
@@ -72,12 +76,12 @@ namespace PRTL
             if (visible)
             {
                 Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
                 Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.None;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }

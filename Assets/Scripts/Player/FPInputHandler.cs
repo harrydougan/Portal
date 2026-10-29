@@ -23,6 +23,15 @@ namespace PRTL
 
         private void Update()
         {
+            if (Controller.InputEnabled)
+            {
+                HandleMovementInput();
+            }
+
+        }
+
+        void HandleMovementInput()
+        {
             Controller.MoveInput = input.Player.Move.ReadValue<Vector2>();
             Controller.LookInput = input.Player.Look.ReadValue<Vector2>();
             Controller.CrouchInput = input.Player.Crouch.IsPressed();
@@ -41,7 +50,6 @@ namespace PRTL
             {
                 Controller.CrouchButtonReleased?.Invoke();
             }
-
         }
         #endregion
     }

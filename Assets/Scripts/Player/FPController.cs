@@ -18,15 +18,33 @@ namespace PRTL
         public Vector2 LookInput { get; set; }
         public bool CrouchInput { get; set; }
 
-
         public UnityAction JumpButtonPressed;
         public UnityAction CrouchButtonPressed;
         public UnityAction CrouchButtonReleased;
+
+        bool inputEnabled = true;
+
+        public bool InputEnabled
+        {
+            get => inputEnabled;
+
+            set
+            {
+                inputEnabled = value;
+
+                if (inputEnabled == false)
+                {
+                    MoveInput = Vector2.zero;
+                    LookInput = Vector2.zero;
+                }
+            }
+        }
         #endregion
 
         public float VerticalSpeed = 0f;
 
         public UnityAction<float> SetVerticalSpeed;
+        public UnityAction<Vector3> SetHorizontalVelocity;
         public UnityEvent Jumped;
         public UnityEvent<float> Landed;
         public UnityEvent Crouched;

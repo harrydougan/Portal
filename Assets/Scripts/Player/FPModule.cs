@@ -23,8 +23,10 @@ namespace PRTL
         }
 
         protected virtual void ResolveDependancies()
-        {
-            Controller = GetComponentInParent<FPController>();
+        {   if (Controller == null)
+            {
+                Controller = GetComponentInParent<FPController>();
+            }
         }
         #endregion
     }

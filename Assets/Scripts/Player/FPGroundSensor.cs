@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace PRTL
 { 
@@ -15,7 +16,9 @@ namespace PRTL
 
             Controller.DistanceToGround = 100f;
 
-            if (Physics.SphereCast(ray, 0.1f, out var hit, 100f, groundLayerMask)) // Sphere cast less precise than Raycast
+            float capsuleRadius = CharacterController.radius * 0.9f;
+
+            if (Physics.SphereCast(ray, capsuleRadius, out var hit, 100f, groundLayerMask)) // Sphere cast less precise than Raycast
             {
                 if (Vector3.Angle(hit.normal, Vector3.up) <= CharacterController.slopeLimit)
                 {
