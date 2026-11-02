@@ -53,7 +53,10 @@ namespace PRTL
 
             ApplyGravity(ref motion);
 
-            CharacterController.Move(motion);
+            if (CharacterController.enabled)
+            {
+                CharacterController.Move(motion);
+            }
 
             Controller.VerticalSpeed = verticalVelocity.y;
 
