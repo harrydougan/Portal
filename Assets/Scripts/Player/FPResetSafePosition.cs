@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace PRTL
 {
@@ -16,6 +17,24 @@ namespace PRTL
         }
 
         EState state = EState.Idle;
+
+        [SerializeField] Volume transitionVolume;
+
+        void SetVolumeVisible(bool visible)
+        {
+            if (transitionVolume == null)
+            {
+                return;
+            }
+
+            float targetWeight = visible ? 1f : 0f;
+
+            transitionVolume.weight = Mathf.Lerp(
+                transitionVolume.weight,
+                targetWeight,
+                5f * Time.deltaTime
+            );
+        }
 
         void ChangeState(EState newState)
         {
@@ -37,11 +56,16 @@ namespace PRTL
         }
 
 
-
+        #region Unity Methods
         private void Start()
         {
             safePosition = Root.position;
             //safeRotation = Root.rotation;
+
+            if (transitionVolume != null)
+            {
+                transitionVolume.weight = 0f; // Sets the PPV to 0 on start
+            }
         }
 
         private void Update()
@@ -54,7 +78,7 @@ namespace PRTL
            if (state == EState.Transition)
             {
 
-                float maxDelta = 30f * Time.deltaTime;
+                float maxDelta = 15f * Time.deltaTime; // Speed of transition
 
                 Root.position = Vector3.MoveTowards(Root.position, safePosition, maxDelta);
 
@@ -73,6 +97,8 @@ namespace PRTL
                 }
 
             }
+
+            SetVolumeVisible(state == EState.Transition);
         }
 
         private void LateUpdate()
@@ -85,6 +111,7 @@ namespace PRTL
                 nextCheckTime = Time.time + 0.5f;
             }
         }
+        #endregion
     }
 
 }
