@@ -32,7 +32,7 @@ namespace PRTL
             transitionVolume.weight = Mathf.Lerp(
                 transitionVolume.weight,
                 targetWeight,
-                5f * Time.deltaTime
+                10f * Time.deltaTime //Speed of the Lerp
             );
         }
 
