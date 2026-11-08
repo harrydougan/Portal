@@ -7,7 +7,6 @@ namespace PRTL
     {
         protected FPController Controller;
         public CharacterController CharacterController => Controller.CharacterController;
-
         public Transform Root => Controller.transform; //Shortcut for Transform attached to FPController
         
         #region Unity Methods
