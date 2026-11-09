@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 39883658}
   - component: {fileID: 39883657}
   - component: {fileID: 39883656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +815,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152789445}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -829,7 +829,7 @@ Transform:
   - {fileID: 435714726}
   - {fileID: 1205220457}
   - {fileID: 812774498}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1192565197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &225559172
 GameObject:
@@ -1067,7 +1067,7 @@ GameObject:
   - component: {fileID: 279941861}
   - component: {fileID: 279941860}
   - component: {fileID: 279941859}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1291,7 +1291,7 @@ GameObject:
   - component: {fileID: 299051293}
   - component: {fileID: 299051292}
   - component: {fileID: 299051291}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3573,7 +3573,7 @@ GameObject:
   - component: {fileID: 783602424}
   - component: {fileID: 783602423}
   - component: {fileID: 783602422}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4447,7 +4447,7 @@ GameObject:
   - component: {fileID: 1125854836}
   - component: {fileID: 1125854835}
   - component: {fileID: 1125854834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4888,6 +4888,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192309772}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1192565196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1192565197}
+  m_Layer: 0
+  m_Name: Original Portal Experiment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1192565197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192565196}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 152789446}
+  - {fileID: 1410319228}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1194630281
 GameObject:
   m_ObjectHideFlags: 0
@@ -5740,7 +5773,7 @@ GameObject:
   - component: {fileID: 1353176354}
   - component: {fileID: 1353176353}
   - component: {fileID: 1353176352}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6088,7 +6121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410319227}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -23.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6102,7 +6135,7 @@ Transform:
   - {fileID: 1894979124}
   - {fileID: 110633892}
   - {fileID: 235837142}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1192565197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1573637169
 GameObject:
@@ -7132,6 +7165,7 @@ GameObject:
   - component: {fileID: 1830173713}
   - component: {fileID: 1830173714}
   - component: {fileID: 1830173715}
+  - component: {fileID: 1830173716}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -7281,7 +7315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PRTL.FPGroundSensor
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 307
 --- !u!114 &1830173712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7298,7 +7332,7 @@ MonoBehaviour:
   transitionSpeed: 10
   ceilingLayerMask:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 307
   cameraHolder: {fileID: 1257499152}
 --- !u!114 &1830173713
 MonoBehaviour:
@@ -7314,7 +7348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PRTL.FPCeilingSensor
   ceilingLayerMask:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 307
 --- !u!114 &1830173714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7341,6 +7375,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PRTL.FPGameEventBusListener
   gameEventBus: {fileID: 11400000, guid: 686deed26c226cf44aae09057f8c7965, type: 2}
+--- !u!114 &1830173716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830173702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f4d6e2809b1d3a44b9b70f789fae400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PRTL.PortalTraveller
+  <Rigidbody>k__BackingField: {fileID: 0}
+  <CharacterController>k__BackingField: {fileID: 0}
+  <PreviousPosition>k__BackingField: {x: 0, y: 0, z: 0}
 --- !u!1 &1894979123
 GameObject:
   m_ObjectHideFlags: 0
@@ -7465,7 +7514,7 @@ GameObject:
   - component: {fileID: 1949129665}
   - component: {fileID: 1949129664}
   - component: {fileID: 1949129663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7801,7 +7850,7 @@ GameObject:
   - component: {fileID: 2098107378}
   - component: {fileID: 2098107377}
   - component: {fileID: 2098107376}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8042,7 +8091,7 @@ GameObject:
   - component: {fileID: 2132485053}
   - component: {fileID: 2132485052}
   - component: {fileID: 2132485051}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8298,6 +8347,5 @@ SceneRoots:
   - {fileID: 2124512120}
   - {fileID: 1215019588}
   - {fileID: 1830173705}
-  - {fileID: 152789446}
-  - {fileID: 1410319228}
+  - {fileID: 1192565197}
   - {fileID: 850269226}

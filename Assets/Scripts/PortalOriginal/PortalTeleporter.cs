@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PRTL
 {
-    public class PortalTeleporter : MonoBehaviour
+    public class PortalTeleporterOld : MonoBehaviour
     {
         public Transform player;
         public Transform reciever;
