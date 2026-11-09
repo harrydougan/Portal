@@ -67,7 +67,7 @@ namespace PRTL
             CharacterController.height = Mathf.Lerp(CharacterController.height, targetHeight, Time.deltaTime * transitionSpeed);
             CharacterController.center = Vector3.Lerp(CharacterController.center, targetCenter, Time.deltaTime * transitionSpeed);
 
-            //Smothly lower/raise the player camera.
+            //Smoothly lower/raise the player camera.
             if (cameraHolder != null)
             {
                 float targetCamY = Controller.IsCrouching ? crouchCameraY : standingCameraY;
