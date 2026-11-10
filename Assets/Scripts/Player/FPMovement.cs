@@ -18,6 +18,9 @@ namespace PRTL
         [Header("Physics Parameters")]
         [SerializeField] float gravityScale = 2f;
 
+        [Header("Push Settings")]
+        [SerializeField] float pushPower = 2.0f;
+        [SerializeField] float weightLimit = 50.0f;
         Vector3 horizontalVelocity = new();
         Vector3 verticalVelocity = new();
         bool HasMoveInput => Controller.MoveInput != Vector2.zero;
@@ -92,6 +95,30 @@ namespace PRTL
         void SetHorizontalVelocity(Vector3 horizontalVelocity)
         {
             this.horizontalVelocity = horizontalVelocity;
+        }
+
+        //For colliding with pushable objects
+        private void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            Rigidbody targetRb = hit.collider.attachedRigidbody;
+
+            // Skip if no Rigidbody, or if it is kinematic
+            if (targetRb == null || targetRb.isKinematic)
+                return;
+
+            // Don't push objects we are standing on (normal pointing mostly upward)
+            if (hit.moveDirection.y < -0.3f)
+                return;
+
+            // Optional: Skip objects heavier than the player's push limit
+            if (targetRb.mass > weightLimit)
+                return;
+
+            // Calculate push direction purely along horizontal axes
+            Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+
+            // Apply impulse at contact point or to center of mass
+            targetRb.AddForce(pushDir * pushPower, ForceMode.Impulse);
         }
     }
 }
