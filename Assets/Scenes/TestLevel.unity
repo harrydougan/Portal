@@ -578,9 +578,9 @@ GameObject:
   - component: {fileID: 51035973}
   - component: {fileID: 51035976}
   - component: {fileID: 51035975}
-  - component: {fileID: 51035978}
   - component: {fileID: 51035974}
   - component: {fileID: 51035977}
+  - component: {fileID: 51035978}
   m_Layer: 7
   m_Name: Cube (3)
   m_TagString: Traveller
@@ -705,9 +705,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!114 &51035978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,9 +717,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 51035972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e962c229be4b3c49965d7e147c7dbda, type: 3}
+  m_Script: {fileID: 11500000, guid: 630593454ab78a945994f8bcfb11fdfe, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObjectGrabbable
+  m_EditorClassIdentifier: '::'
+  throwForce: 600
+  maxDistance: 3
 --- !u!1 &110633891
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,11 +874,6 @@ Transform:
   - {fileID: 812774498}
   m_Father: {fileID: 1192565197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &163967475 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3136479994014234615, guid: b67f53cd10809434ab347a33bed0508f, type: 3}
-  m_PrefabInstance: {fileID: 4691230347341977636}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &225559172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,9 +2856,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 607329340}
-  m_Layer: 6
-  m_Name: ObjectGrabPoint
-  m_TagString: Untagged
+  - component: {fileID: 607329341}
+  m_Layer: 7
+  m_Name: Temp Parent
+  m_TagString: Traveller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2875,12 +2873,24 @@ Transform:
   m_GameObject: {fileID: 607329339}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1257499152}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &607329341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607329339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e690e55bccba046a4be50e6be26671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &608495096
 GameObject:
   m_ObjectHideFlags: 0
@@ -7181,23 +7191,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4976494535238149911, guid: b67f53cd10809434ab347a33bed0508f, type: 3}
   m_PrefabInstance: {fileID: 4691230347341977636}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1830173717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163967475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 855c9e7c27a121d478d94df8dcbe0f2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerPickUpDrop
-  playerCameraTransform: {fileID: 1257499152}
-  objectGrabPointTransform: {fileID: 607329340}
-  pickUpLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &1894979123
 GameObject:
   m_ObjectHideFlags: 0
@@ -8138,10 +8131,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5653955916814765940, guid: b67f53cd10809434ab347a33bed0508f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 607329340}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3136479994014234615, guid: b67f53cd10809434ab347a33bed0508f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1830173717}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b67f53cd10809434ab347a33bed0508f, type: 3}
 --- !u!1001 &5159910252068607477
 PrefabInstance:

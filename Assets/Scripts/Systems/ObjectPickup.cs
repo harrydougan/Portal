@@ -55,7 +55,7 @@ public class ObjectPickup : MonoBehaviour
         }
     }
 
-   // private void OnMouseUp()
+    //private void OnMouseUp()
     //{
     //    Drop();
     //}

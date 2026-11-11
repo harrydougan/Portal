@@ -23,6 +23,9 @@ namespace PRTL
         [SerializeField] float weightLimit = 50.0f;
         Vector3 horizontalVelocity = new();
         Vector3 verticalVelocity = new();
+
+
+        
         bool HasMoveInput => Controller.MoveInput != Vector2.zero;
 
         #region Unity Methods
