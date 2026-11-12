@@ -1,60 +1,60 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Unlit/ScreenCutoutShader"
+Shader "Unlit/ScreenCutoutShader_URP"
 {
-	Properties
-	{
-		_MainTex ("Texture", 2D) = "white" {}
-	}
-	SubShader
-	{
-		Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
-		Lighting Off
-		Cull Back
-		ZWrite On
-		ZTest Less
-		
-		Fog{ Mode Off }
+    Properties
+    {
+        _MainTex ("Texture", 2D) = "white" {}
+    }
+    SubShader
+    {
+        Tags 
+        { 
+            "RenderType" = "Opaque" 
+            "Queue" = "Geometry" 
+            "RenderPipeline" = "UniversalPipeline" 
+        }
 
-		Pass
-		{
-			CGPROGRAM
-			#pragma vertex vert
-			#pragma fragment frag
-			
-			#include "UnityCG.cginc"
+        Pass
+        {
+            Name "PortalCutout"
+            Cull Back
+            ZWrite On
+            ZTest LEqual
 
-			struct appdata
-			{
-				float4 vertex : POSITION;
-				float2 uv : TEXCOORD0;
-			};
+            HLSLPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
 
-			struct v2f
-			{
-				//float2 uv : TEXCOORD0;
-				float4 vertex : SV_POSITION;
-				float4 screenPos : TEXCOORD1;
-			};
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-			v2f vert (appdata v)
-			{
-				v2f o;
-				o.vertex = UnityObjectToClipPos(v.vertex);
-				o.screenPos = ComputeScreenPos(o.vertex);
-				return o;
-			}
-			
-			sampler2D _MainTex;
+            struct Attributes
+            {
+                float4 positionOS : POSITION;
+            };
 
-			fixed4 frag (v2f i) : SV_Target
-			{
-				i.screenPos /= i.screenPos.w;
-				fixed4 col = tex2D(_MainTex, float2(i.screenPos.x, i.screenPos.y));
-				
-				return col;
-			}
-			ENDCG
-		}
-	}
+            struct Varyings
+            {
+                float4 positionHCS : SV_POSITION;
+                float4 screenPos   : TEXCOORD0;
+            };
+
+            TEXTURE2D(_MainTex);
+            SAMPLER(sampler_MainTex);
+
+            Varyings vert(Attributes input)
+            {
+                Varyings output;
+                output.positionHCS = TransformObjectToHClip(input.positionOS.xyz);
+                output.screenPos = ComputeScreenPos(output.positionHCS);
+                return output;
+            }
+
+            half4 frag(Varyings input) : SV_Target
+            {
+                float2 screenUV = input.screenPos.xy / input.screenPos.w;
+                half4 col = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, screenUV);
+                return col;
+            }
+            ENDHLSL
+        }
+    }
 }

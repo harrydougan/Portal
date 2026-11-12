@@ -5,29 +5,31 @@ namespace PRTL
     public class PortalCamera : MonoBehaviour
     {
         public Transform playerCamera;
-        public Transform portal;
-        public Transform otherPortal;
+        public Transform portal;        // The Plane this camera is rendering behind
+        public Transform otherPortal;   // The entrance Plane the player is looking into
 
-        void Update()
+        void LateUpdate()
         {
+            if (playerCamera == null || portal == null || otherPortal == null)
+                return;
 
-            // Offset is the Main cameras position - the other portals position.
+            //Find the rotation difference between the two portals' outward normals (.up)
+            Quaternion normalDiff = Quaternion.FromToRotation(otherPortal.up, portal.up);
+
+            //Flip 180 degrees around the exit portal's vertical axis (.forward) so we look OUT of it
+            Quaternion flip = Quaternion.AngleAxis(180f, portal.forward);
+
+            //Combine them into a single total rotation difference
+            Quaternion totalRotationDiff = flip * normalDiff;
+
+            //Rotate the player's position offset so moving forward into Portal A moves the camera forward out of Portal B
             Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
+            transform.position = portal.position + (totalRotationDiff * playerOffsetFromPortal);
 
-            // New transform is the Portal Position + The Offset
-            transform.position = portal.position + playerOffsetFromPortal;
-
-            //Angular Diff in Rotations
-            float angularDiffBetweenPortalRotations = Quaternion.Angle(portal.rotation, otherPortal.rotation);
-
-            //Portal Rotation Diff
-            Quaternion portalRotationalDifference = Quaternion.AngleAxis(angularDiffBetweenPortalRotations, Vector3.up);
-
-            //Direction camera needs to point
-            Vector3 newCameraDirection = portalRotationalDifference * playerCamera.forward;
-            transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
-
+            //Rotate the camera's forward and up directions to match the new perspective
+            Vector3 newCameraForward = totalRotationDiff * playerCamera.forward;
+            Vector3 newCameraUp = totalRotationDiff * playerCamera.up;
+            transform.rotation = Quaternion.LookRotation(newCameraForward, newCameraUp);
         }
     }
-
 }
