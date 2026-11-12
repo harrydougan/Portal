@@ -24,8 +24,19 @@ namespace PRTL
         Vector3 horizontalVelocity = new();
         Vector3 verticalVelocity = new();
 
+        public Vector3 HorizontalVelocity
+        {
+            get => horizontalVelocity;
+            set => horizontalVelocity = value;
+        }
 
-        
+        public Vector3 VerticalVelocity
+        {
+            get => verticalVelocity;
+            set => verticalVelocity = value;
+        }
+
+
         bool HasMoveInput => Controller.MoveInput != Vector2.zero;
 
         #region Unity Methods

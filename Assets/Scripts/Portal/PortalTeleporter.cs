@@ -10,7 +10,8 @@ namespace PRTL
     {
         [Tooltip("The destination portal exit point")]
         public Transform reciever;
-        
+        public Transform traveller;
+        public Transform player;
         // Track all overlapping objects currently inside this portal trigger
         private readonly HashSet<Collider> overlappingColliders = new HashSet<Collider>();
 
@@ -39,11 +40,11 @@ namespace PRTL
 
                 
 
-                Quaternion deltaRotation = Quaternion.FromToRotation(transform.up, reciever.transform.up);
+                //Quaternion deltaRotation = Quaternion.FromToRotation(transform.up, reciever.transform.up);
 
                 
-                targetTransform.forward = -targetTransform.forward;
-                targetTransform.forward = deltaRotation * targetTransform.forward;
+                //targetTransform.forward = -targetTransform.forward;
+                //targetTransform.forward = deltaRotation * targetTransform.forward;
 
                 // Target crossed the portal threshold plane
                 if (dotProduct < 0f)
@@ -52,7 +53,6 @@ namespace PRTL
                     overlappingColliders.Remove(col);
                 }
 
-                Vector3 verticalVel = col.GetComponent<>();
 
             }
         }
@@ -68,15 +68,19 @@ namespace PRTL
 
             //Debug.Log(rotationDiff);
             //Debug.Log(transform.forward);
-            Debug.Log(transform.up); // Normal to the portal
+            //Debug.Log(transform.up); // Normal to the portal
             //Debug.Log(reciever.transform.forward);
-            Debug.Log(reciever.transform.up);
+            //Debug.Log(reciever.transform.up);
+            //Debug.Log(traveller.transform);
 
             //Apply rotation and position offset
-            target.Rotate(Vector3.up, rotationDiff);
+            //target.Rotate(Vector3.up, rotationDiff);
 
-            target.forward = -target.forward;
-            target.forward = deltaRotation * target.forward;
+            player.transform.forward = -player.transform.forward;
+            player.transform.forward = deltaRotation * player.transform.forward;
+
+            traveller.transform.forward = -traveller.transform.forward;
+            traveller.transform.forward = deltaRotation * traveller.transform.forward;
 
             Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToTarget;
             
@@ -92,6 +96,28 @@ namespace PRTL
                 rb.angularVelocity = deltaRotation * rb.angularVelocity;
 
                 Debug.Log(deltaRotation);
+            }
+
+            FPMovement fpMovement = player.GetComponent<FPMovement>();
+
+            if (fpMovement != null)
+            {
+                fpMovement.VerticalVelocity += new Vector3 (0, 4f, 0f);
+
+                Vector3 totalVelocity = fpMovement.HorizontalVelocity + fpMovement.VerticalVelocity;
+
+                Debug.Log(totalVelocity);
+
+                totalVelocity = -totalVelocity;
+                totalVelocity = deltaRotation * totalVelocity;
+
+                Debug.Log(totalVelocity);
+
+                fpMovement.HorizontalVelocity = new Vector3(totalVelocity.x, 0f, totalVelocity.z);
+                fpMovement.VerticalVelocity = new Vector3(0f, totalVelocity.y - 4f, 0f);
+
+                
+
             }
 
             // Inform Unity's physics engine of manual position/rotation changes
