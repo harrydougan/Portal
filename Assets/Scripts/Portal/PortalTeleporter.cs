@@ -57,67 +57,49 @@ namespace PRTL
             }
         }
 
-
-        //Object
         private void TeleportObject(Transform target, Vector3 portalToTarget)
         {
             // Calculate rotation differential between entrance and exit portal
             float rotationDiff = -Quaternion.Angle(transform.rotation, reciever.rotation);
-            //rotationDiff += 180f;
             Quaternion deltaRotation = Quaternion.FromToRotation(transform.up, reciever.transform.up);
 
-            //Debug.Log(rotationDiff);
-            //Debug.Log(transform.forward);
-            //Debug.Log(transform.up); // Normal to the portal
-            //Debug.Log(reciever.transform.forward);
-            //Debug.Log(reciever.transform.up);
-            //Debug.Log(traveller.transform);
-
-            //Apply rotation and position offset
-            //target.Rotate(Vector3.up, rotationDiff);
-
-            player.transform.forward = -player.transform.forward;
-            player.transform.forward = deltaRotation * player.transform.forward;
-
-            traveller.transform.forward = -traveller.transform.forward;
-            traveller.transform.forward = deltaRotation * traveller.transform.forward;
-
+            // 1. Reposition whichever object actually crossed the threshold
             Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToTarget;
-            
             target.position = reciever.position + positionOffset;
 
-            // Preserve and redirect physical momentum if a Rigidbody is attached
-            Rigidbody rb = target.GetComponent<Rigidbody>();
-            if (rb != null)
+            // 2. ONLY rotate the player and adjust FPMovement if the Player is the target
+            if (target.CompareTag("Player"))
             {
-                rb.linearVelocity = -rb.linearVelocity;
+                target.forward = -target.forward;
+                target.forward = deltaRotation * target.forward;
 
-                rb.linearVelocity = deltaRotation * rb.linearVelocity;
-                rb.angularVelocity = deltaRotation * rb.angularVelocity;
+                FPMovement fpMovement = target.GetComponent<FPMovement>();
+                if (fpMovement != null)
+                {
+                    fpMovement.VerticalVelocity += new Vector3(0, 4f, 0f);
 
-                Debug.Log(deltaRotation);
+                    Vector3 totalVelocity = fpMovement.HorizontalVelocity + fpMovement.VerticalVelocity;
+                    totalVelocity = -totalVelocity;
+                    totalVelocity = deltaRotation * totalVelocity;
+
+                    fpMovement.HorizontalVelocity = new Vector3(totalVelocity.x, 0f, totalVelocity.z);
+                    fpMovement.VerticalVelocity = new Vector3(0f, totalVelocity.y - 4f, 0f);
+                }
             }
-
-            FPMovement fpMovement = player.GetComponent<FPMovement>();
-
-            if (fpMovement != null)
+            // 3. Handle thrown objects / travellers separately
+            else if (target.CompareTag("Traveller"))
             {
-                fpMovement.VerticalVelocity += new Vector3 (0, 4f, 0f);
+                // Rotate the thrown object itself (if desired)
+                target.forward = -target.forward;
+                target.forward = deltaRotation * target.forward;
 
-                Vector3 totalVelocity = fpMovement.HorizontalVelocity + fpMovement.VerticalVelocity;
-
-                Debug.Log(totalVelocity);
-
-                totalVelocity = -totalVelocity;
-                totalVelocity = deltaRotation * totalVelocity;
-
-                Debug.Log(totalVelocity);
-
-                fpMovement.HorizontalVelocity = new Vector3(totalVelocity.x, 0f, totalVelocity.z);
-                fpMovement.VerticalVelocity = new Vector3(0f, totalVelocity.y - 4f, 0f);
-
-                
-
+                Rigidbody rb = target.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.linearVelocity = -rb.linearVelocity;
+                    rb.linearVelocity = deltaRotation * rb.linearVelocity;
+                    rb.angularVelocity = deltaRotation * rb.angularVelocity;
+                }
             }
 
             // Inform Unity's physics engine of manual position/rotation changes
