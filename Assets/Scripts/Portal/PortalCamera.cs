@@ -8,21 +8,24 @@ namespace PRTL
         public Transform portal;
         public Transform otherPortal;
 
-        void LateUpdate()
+        void Update()
         {
-            if (playerCamera == null || portal == null || otherPortal == null)
-                return;
 
-            // Use otherPortal.forward if your Unity Plane is stood upright, 
-            // or Vector3.up if using standard forward-facing portals.
-            Quaternion flip = Quaternion.AngleAxis(180f, otherPortal.forward);
+            // Offset is the Main cameras position - the other portals position.
+            Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
 
-            Matrix4x4 m = portal.localToWorldMatrix *
-                          Matrix4x4.Rotate(flip) *
-                          otherPortal.worldToLocalMatrix;
+            // New transform is the Portal Position + The Offset
+            transform.position = portal.position + playerOffsetFromPortal;
 
-            transform.position = m.MultiplyPoint3x4(playerCamera.position);
-            transform.rotation = m.rotation * playerCamera.rotation;
+            //Angular Diff in Rotations
+            float angularDiffBetweenPortalRotations = Quaternion.Angle(portal.rotation, otherPortal.rotation);
+
+            //Portal Rotation Diff
+            Quaternion portalRotationalDifference = Quaternion.AngleAxis(angularDiffBetweenPortalRotations, Vector3.up);
+
+            //Direction camera needs to point
+            Vector3 newCameraDirection = portalRotationalDifference * playerCamera.forward;
+            transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
 
         }
     }
