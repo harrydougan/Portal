@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.VFX;
@@ -61,11 +62,46 @@ namespace PRTL
         {
             // Calculate rotation differential between entrance and exit portal
             float rotationDiff = -Quaternion.Angle(transform.rotation, reciever.rotation);
+            rotationDiff += 180f;
+
+
+
             Quaternion deltaRotation = Quaternion.FromToRotation(transform.up, reciever.transform.up);
 
             // 1. Reposition whichever object actually crossed the threshold
-            Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToTarget;
-            target.position = reciever.position + positionOffset;
+            //Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToTarget;
+            //target.position = Quaternion.AngleAxis(rotationDiff, transform.up) * target.position;
+
+            Vector3 direction = transform.position - target.position; //Might need inverted
+
+            Debug.Log(direction);
+
+            Vector3 angleDiff = deltaRotation.eulerAngles;
+            
+
+            direction = Quaternion.AngleAxis(Vector3.Dot(angleDiff, transform.up)+180f, transform.forward) * direction;
+
+
+            //Quaternion halfTurn = Quaternion.Euler(0f, 0f, 180f);
+
+            //Quaternion relativeRotation = reciever.rotation * halfTurn * Quaternion.Inverse(transform.rotation);
+
+            //Debug.Log(deltaRotation.eulerAngles);
+            
+
+
+
+           // Debug.Log(reciever.localRotation);
+
+            target.position = reciever.position + direction;
+
+
+
+
+
+            //target.position = reciever.position + portalToTarget;
+
+
 
             // 2. ONLY rotate the player and adjust FPMovement if the Player is the target
             if (target.CompareTag("Player"))
