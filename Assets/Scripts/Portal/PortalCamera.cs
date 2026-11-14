@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace PRTL
@@ -10,26 +11,23 @@ namespace PRTL
 
         void LateUpdate()
         {
-            if (playerCamera == null || portal == null || otherPortal == null)
+            if (playerCamera == null || portal == null ||  otherPortal == null) 
                 return;
 
-            // 1. Find the rotation difference between the two portals' outward normals (.up)
-            Quaternion normalDiff = Quaternion.FromToRotation(otherPortal.up, portal.up);
-
-            // 2. Flip 180 degrees around the exit portal's vertical axis (.forward) so we look OUT of it
-            Quaternion flip = Quaternion.AngleAxis(180f, portal.forward);
-
             // Combine them into a single total rotation difference
-            Quaternion totalRotationDiff = flip * normalDiff;
-
+            Quaternion halfTurn = Quaternion.Euler(0f, 0f, 180f);
+            Quaternion relativeRotation = portal.rotation * halfTurn * Quaternion.Inverse(otherPortal.rotation);
             // 3. Rotate the player's position offset so moving forward into Portal A moves the camera forward out of Portal B
             Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
-            transform.position = portal.position + (totalRotationDiff * playerOffsetFromPortal);
+            transform.position = portal.position + (relativeRotation * playerOffsetFromPortal);
 
             // 4. Rotate the camera's forward and up directions to match the new perspective
-            Vector3 newCameraForward = totalRotationDiff * playerCamera.forward;
-            Vector3 newCameraUp = totalRotationDiff * playerCamera.up;
+            Vector3 newCameraForward = relativeRotation * playerCamera.forward;
+            Vector3 newCameraUp = relativeRotation * playerCamera.up;
             transform.rotation = Quaternion.LookRotation(newCameraForward, newCameraUp);
+
+
+
 
         }
     }
