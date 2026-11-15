@@ -12156,8 +12156,8 @@ GameObject:
   - component: {fileID: 569958795}
   - component: {fileID: 569958800}
   - component: {fileID: 569958799}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 7
+  m_Name: Traveller
   m_TagString: Traveller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17057,7 +17057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PortalTeleporter
   reciever: {fileID: 2357161809991856891}
-  traveller: {fileID: 0}
+  traveller: {fileID: 569958798}
   player: {fileID: 1830173705}
 --- !u!4 &1402813479339596812
 Transform:
@@ -17126,7 +17126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PortalTeleporter
   reciever: {fileID: 8464422497963939263}
-  traveller: {fileID: 0}
+  traveller: {fileID: 569958798}
   player: {fileID: 1830173705}
 --- !u!4 &2357161809991856891
 Transform:
@@ -17322,6 +17322,10 @@ MonoBehaviour:
   playerCamera: {fileID: 1257499152}
   portal: {fileID: 5032872037178509959}
   otherPortal: {fileID: 6272027097336755491}
+  portalCamera: {fileID: 7862914735016940275}
+  mainCamera: {fileID: 1746065012}
+  nearClipOffset: 0.05
+  nearClipLimit: 0.2
 --- !u!1 &5240525405054443558
 GameObject:
   m_ObjectHideFlags: 0
@@ -17611,6 +17615,10 @@ MonoBehaviour:
   playerCamera: {fileID: 1257499152}
   portal: {fileID: 6272027097336755491}
   otherPortal: {fileID: 5032872037178509959}
+  portalCamera: {fileID: 8556760016498457564}
+  mainCamera: {fileID: 1746065012}
+  nearClipOffset: 0.05
+  nearClipLimit: 0.2
 --- !u!4 &8464422497963939263
 Transform:
   m_ObjectHideFlags: 0
