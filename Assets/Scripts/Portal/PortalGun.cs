@@ -12,14 +12,19 @@ namespace PRTL
         public LayerMask portableLayer;
         public float maxRange = 100f;
 
+        public AudioSource blueSound;
+        public AudioSource orangeSound;
+
         void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
                 ShootPortal(portalA); // Shoot Portal A
+                blueSound.Play();
             } else if (Input.GetMouseButtonDown(1))
             {
                 ShootPortal(portalB); // Shoot Portal B
+                orangeSound.Play();
             }
         }
 
