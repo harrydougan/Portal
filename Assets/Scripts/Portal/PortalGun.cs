@@ -6,29 +6,30 @@ namespace PRTL
 {
     public class PortalGun : MonoBehaviour
     {
+        [Header("Transforms")]
         public Camera playerCamera;
         public Transform portalA;
         public Transform portalB;
         public LayerMask portableLayer;
+        [Header("Range")]
         public float maxRange = 100f;
-
+        [Header("Sound Effects")]
         public AudioSource blueSound;
         public AudioSource orangeSound;
+        public AudioSource invalidSound;
 
         void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
-                ShootPortal(portalA); // Shoot Portal A
-                blueSound.Play();
+                ShootPortal(portalA, blueSound); // Shoot Portal A and Play sound effect
             } else if (Input.GetMouseButtonDown(1))
             {
-                ShootPortal(portalB); // Shoot Portal B
-                orangeSound.Play();
+                ShootPortal(portalB, orangeSound); // Shoot Portal B and Play sound effect
             }
         }
 
-        private void ShootPortal(Transform portal)
+        private void ShootPortal(Transform portal, AudioSource portalSound)
         {
             Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
 
@@ -49,6 +50,18 @@ namespace PRTL
                 if (!portal.gameObject.activeSelf)
                 {
                     portal.gameObject.SetActive(true);
+                }
+
+                if(portalSound != null)
+                {
+                    portalSound.Play();
+                }
+            }
+            else //If ray is not in max range and player is clicking mouse 0 and 1 play invalid sound
+            {
+                if(invalidSound != null)
+                {
+                    invalidSound.Play();
                 }
             }
         }
