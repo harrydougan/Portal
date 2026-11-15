@@ -18,6 +18,7 @@ namespace PRTL
         public Transform reciever;
         public Transform traveller;
         public Transform player;
+
         // Track all overlapping objects currently inside this portal trigger
         private readonly HashSet<Collider> overlappingColliders = new HashSet<Collider>();
 
@@ -161,18 +162,19 @@ namespace PRTL
         {
             if (duration > 0f)
             {
-                float startTime = Time.time;
-                float endTime = startTime + duration;
+                float startTime = Time.time; //Time transition starts
+                float endTime = startTime + duration; //How long we want transition to take. Length = duration
                 yield return null;
                 while (Time.time < endTime)
                 {
-                    float progress = (Time.time - startTime) / duration;
+                    float progress = (Time.time - startTime) / duration; 
                     // progress will equal 0 at startTime, 1 at endTime.
-                    playerTransform.rotation = Quaternion.Slerp(inital, final, progress);
+                    playerTransform.rotation = Quaternion.Slerp(inital, final, progress); // 0 - 1
                     yield return null;
                 }
             }
             playerTransform.rotation = final;
         }
+
     }
 }
