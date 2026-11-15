@@ -31,7 +31,7 @@ namespace PRTL
 
         private void ShootPortal(Transform portal, AudioSource portalSound)
         {
-            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);//Where are ray is projecting from.
 
             if(Physics.Raycast(ray, out RaycastHit hit, maxRange, portableLayer))
             {

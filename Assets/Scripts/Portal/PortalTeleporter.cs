@@ -1,14 +1,7 @@
-using System;
+
 using System.Collections.Generic;
 using System.Collections;
-using System.Runtime.InteropServices;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.VFX;
-using static UnityEngine.GraphicsBuffer;
 
 namespace PRTL
 {
@@ -85,7 +78,7 @@ namespace PRTL
                 //This defines the final orientation we want which is upright and then passes it to the coroutine if needs be
                 Quaternion sendUpright = Quaternion.FromToRotation(target.up, new Vector3(0, 1, 0));
                 Quaternion upright = sendUpright * target.rotation;
-                float uprightTime = 0.7f;
+                float uprightTime = 0.4f;
 
                 //First check are we upright, if not DO it.
                 //Need to check because you can't move the camera while uprighting so for flat portals it is unresponsive
