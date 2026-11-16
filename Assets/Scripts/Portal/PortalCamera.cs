@@ -37,15 +37,6 @@ namespace PRTL
             //Set cameras oblique view frustum
             SetNearClipPlane();
 
-
-            //Rotate the player's position offset so moving forward into Portal A moves the camera forward out of Portal B
-            Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
-            transform.position = portal.position + (totalRotationDiff * playerOffsetFromPortal);
-
-            //Rotate the camera's forward and up directions to match the new perspective
-            Vector3 newCameraForward = totalRotationDiff * playerCamera.forward;
-            Vector3 newCameraUp = totalRotationDiff * playerCamera.up;
-            transform.rotation = Quaternion.LookRotation(newCameraForward, newCameraUp);
         }
         void SetNearClipPlane()
         {
