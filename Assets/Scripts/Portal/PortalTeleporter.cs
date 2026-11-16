@@ -135,6 +135,7 @@ namespace PRTL
             Physics.SyncTransforms();
         }
 
+
         void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player") || other.CompareTag("Traveller"))
