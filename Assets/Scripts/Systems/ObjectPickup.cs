@@ -78,7 +78,7 @@ public class ObjectPickup : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             rb.AddForce(tempParent.transform.forward * throwForce);
             Drop();
