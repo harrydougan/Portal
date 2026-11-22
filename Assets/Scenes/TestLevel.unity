@@ -17884,7 +17884,7 @@ MonoBehaviour:
   otherPortal: {fileID: 6272027097336755491}
   portalCamera: {fileID: 7862914735016940275}
   mainCamera: {fileID: 1746065012}
-  recursionLimit: 5
+  recursionLimit: 3
   portalScreenRenderer: {fileID: 6623759317694529833}
   nearClipOffset: 0.05
   nearClipLimit: 0.2
@@ -18179,7 +18179,7 @@ MonoBehaviour:
   otherPortal: {fileID: 5032872037178509959}
   portalCamera: {fileID: 8556760016498457564}
   mainCamera: {fileID: 1746065012}
-  recursionLimit: 5
+  recursionLimit: 3
   portalScreenRenderer: {fileID: 173621661483375483}
   nearClipOffset: 0.05
   nearClipLimit: 0.2

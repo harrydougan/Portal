@@ -1,6 +1,5 @@
 
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -28,6 +27,7 @@ namespace PRTL
 
         private Vector3[] renderPositions;
         private Quaternion[] renderRotations;
+        private Plane[] frustumPlanes = new Plane[6];
         
         private void Awake()
         {
@@ -42,6 +42,10 @@ namespace PRTL
                 return;
 
             if (portalCamera.targetTexture == null)
+                return;
+
+            // Skip the entire recursion loop if the entrance portal isn't inside the player's view frustum
+            if (portalScreenRenderer != null && !VisibleFromCamera(portalScreenRenderer, mainCamera))
                 return;
 
             if (renderPositions == null || renderPositions.Length != recursionLimit)
@@ -93,6 +97,12 @@ namespace PRTL
             {
                 portalScreenRenderer.enabled = true;
             }
+        }
+
+        private bool VisibleFromCamera(Renderer renderer, Camera cam)
+        {
+            GeometryUtility.CalculateFrustumPlanes(cam, frustumPlanes);
+            return GeometryUtility.TestPlanesAABB(frustumPlanes, renderer.bounds);
         }
 
         void SetNearClipPlane()
