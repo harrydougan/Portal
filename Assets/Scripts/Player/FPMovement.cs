@@ -37,6 +37,7 @@ namespace PRTL
         }
 
 
+
         bool HasMoveInput => Controller.MoveInput != Vector2.zero;
 
         #region Unity Methods
@@ -88,7 +89,7 @@ namespace PRTL
                 verticalVelocity.y = 0f;
             }
 
-            if (!Controller.Grounded) // Grounded checks to see if player is on the ground to prevent infinite verticalVelocity scaling.
+            if (!Controller.Grounded) // Do not reset vertical velocity if the player is currently inside a portal trigger
             {
                 verticalVelocity += Physics.gravity * gravityScale * Time.deltaTime;
             }

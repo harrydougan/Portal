@@ -15,6 +15,7 @@ namespace PRTL
         // Track all overlapping objects currently inside this portal trigger
         private readonly HashSet<Collider> overlappingColliders = new HashSet<Collider>();
 
+
         void Update()
         {
 
@@ -61,12 +62,12 @@ namespace PRTL
             portalToObj = relRotation * portalToObj;
             target.position = reciever.position + portalToObj;
 
-
             //Players and objects get treated differently; Player will always be sent upright and their movement is not RB, 
             //Objects will keep their orientation and use rb.linear and angular velocity
-            // 2. ONLY rotate the player and adjust FPMovement if the Player is the target
+            // ONLY rotate the player and adjust FPMovement if the Player is the target
             if (target.CompareTag("Player"))
             {
+      
 
                 //Rotate the player to come out the second portal in the same orientation plus a 180 half turn around Y-axis
                 //Quaternion multiplication goes right to left, inverse the first portals orientation to zero -> Perform mirror flip
@@ -115,9 +116,6 @@ namespace PRTL
                 Rigidbody rb = target.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
-                    //Vector3 localVelocity = transform.InverseTransformDirection(rb.linearVelocity);
-                    //localVelocity = Quaternion.Euler(0, 0, 180) * localVelocity;
-                    //rb.linearVelocity = reciever.TransformDirection(localVelocity);
                     rb.linearVelocity = relRotation * rb.linearVelocity;
 
                     //Going to Local coordinates applying the transform and then inverting back to world works just 
@@ -171,6 +169,5 @@ namespace PRTL
             }
             playerTransform.rotation = final;
         }
-
     }
 }
