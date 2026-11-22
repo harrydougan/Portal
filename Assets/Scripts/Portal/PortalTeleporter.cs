@@ -152,6 +152,8 @@ namespace PRTL
             }
         }
 
+
+        //Handles rotation of player camera when going coming out of an off angle portal.
         private IEnumerator UprightRoutine(Quaternion inital, Quaternion final, Transform playerTransform, float duration)
         {
             if (duration > 0f)
