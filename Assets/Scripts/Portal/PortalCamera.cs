@@ -1,5 +1,9 @@
 
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 
 namespace PRTL
@@ -13,31 +17,84 @@ namespace PRTL
         public Camera portalCamera;
         public Camera mainCamera;
 
+        [Header("Recursion Settings")]
+        [Range(1, 10)]
+        public int recursionLimit = 5;
+        public MeshRenderer portalScreenRenderer; //Plane mesh renderer on other protal.
+
+        [Header("Oblique Clipping Settings")]
         public float nearClipOffset = 0.05f;
         public float nearClipLimit = 0.1f;
-        void LateUpdate()
+
+        private Vector3[] renderPositions;
+        private Quaternion[] renderRotations;
+        
+        private void Awake()
         {
-            if (playerCamera == null || portal == null || otherPortal == null)
+            renderPositions = new Vector3[recursionLimit];
+            renderRotations = new Quaternion[recursionLimit];
+        }
+
+
+        private void LateUpdate()
+        {
+            if (playerCamera == null || portal == null || otherPortal == null || portalCamera == null || mainCamera == null)
                 return;
 
-            // Combine them into a single total rotation difference
-            Quaternion halfTurn = Quaternion.Euler(0f, 0f, 180f);
-            Quaternion relativeRotation = portal.rotation * halfTurn * Quaternion.Inverse(otherPortal.rotation);
-            // 3. Rotate the player's position offset so moving forward into Portal A moves the camera forward out of Portal B
-            Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
-            transform.position = portal.position + (relativeRotation * playerOffsetFromPortal);
+            if (portalCamera.targetTexture == null)
+                return;
 
-            // 4. Rotate the camera's forward and up directions to match the new perspective
-            Vector3 newCameraForward = relativeRotation * playerCamera.forward;
-            Vector3 newCameraUp = relativeRotation * playerCamera.up;
-            transform.rotation = Quaternion.LookRotation(newCameraForward, newCameraUp);
+            if (renderPositions == null || renderPositions.Length != recursionLimit)
+            {
+                renderPositions = new Vector3[recursionLimit];
+                renderRotations = new Quaternion[recursionLimit];
+            }
 
-            //Oblique projection matrix
+            // Matrix that flips 180 degrees around the portal's normal (local Y axis)
+            Matrix4x4 halfTurnMatrix = Matrix4x4.Rotate(Quaternion.Euler(0f, 0f, 180f));
 
-            //Set cameras oblique view frustum
-            SetNearClipPlane();
+            // Start from the player camera's world matrix
+            Matrix4x4 localToWorldMatrix = playerCamera.localToWorldMatrix;
 
+            // Step FORWARD (0 -> recursionLimit - 1)
+            for (int i = 0; i < recursionLimit; i++)
+            {
+                // Transform from entrance (otherPortal) local space -> flip 180 around local Y -> exit (portal) world space
+                localToWorldMatrix = portal.localToWorldMatrix * halfTurnMatrix * otherPortal.worldToLocalMatrix * localToWorldMatrix;
+
+                renderPositions[i] = localToWorldMatrix.GetColumn(3);
+                renderRotations[i] = localToWorldMatrix.rotation;
+            }
+
+            // Render BACKWARD (recursionLimit - 1 -> 0)
+            for (int i = recursionLimit - 1; i >= 0; i--)
+            {
+                portalCamera.transform.SetPositionAndRotation(renderPositions[i], renderRotations[i]);
+
+                if (portalScreenRenderer != null)
+                {
+                    portalScreenRenderer.enabled = (i != recursionLimit - 1);
+                }
+
+                SetNearClipPlane();
+
+                var request = new UniversalRenderPipeline.SingleCameraRequest
+                {
+                    destination = portalCamera.targetTexture
+                };
+
+                if (RenderPipeline.SupportsRenderRequest(portalCamera, request))
+                {
+                    RenderPipeline.SubmitRenderRequest(portalCamera, request);
+                }
+            }
+
+            if (portalScreenRenderer != null)
+            {
+                portalScreenRenderer.enabled = true;
+            }
         }
+
         void SetNearClipPlane()
         {
 
