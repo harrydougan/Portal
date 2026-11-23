@@ -103,11 +103,9 @@ namespace PRTL
 
         private void LateUpdate()
         {
-            if (Controller.Grounded && Time.time >= nextCheckTime && state == EState.Idle)
+            if (Controller.Grounded && !Controller.IsInPortal && Time.time >= nextCheckTime && state == EState.Idle)
             {
                 safePosition = Root.position;
-                //safeRotation = Root.rotation;
-
                 nextCheckTime = Time.time + 0.5f;
             }
         }

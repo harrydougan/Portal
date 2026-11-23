@@ -21,6 +21,7 @@ namespace PRTL
         #region Unity Methods
         private void Start()
         {
+            standingHeight = CharacterController.height;
             Controller.JumpButtonPressed += OnJumpButtonPressed;
         }
 

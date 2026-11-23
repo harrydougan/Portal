@@ -9,7 +9,7 @@ namespace PRTL
 
         public float DistanceToGround = 0f;
         public float DistanceToCeiling = 100f;
-        public bool Grounded => DistanceToGround <= 0.2f;
+        public bool Grounded => !IsInPortal && DistanceToGround <= 0.08f;
         public bool IsCrouching { get; set; }
         public System.Func<bool> CanStandUp;
 
@@ -49,6 +49,19 @@ namespace PRTL
         public UnityEvent<float> Landed;
         public UnityEvent Crouched;
         public UnityEvent Uncrouched;
+
+        private int activePortalCount = 0;
+        public bool IsInPortal => activePortalCount > 0;
+
+        public void EnterPortal()
+        {
+            activePortalCount++;
+        }
+
+        public void ExitPortal()
+        {
+            activePortalCount = Mathf.Max(0, activePortalCount - 1);
+        }
 
         #region Unity Methods
         private void Awake()

@@ -12,6 +12,32 @@ namespace PRTL
         public Transform traveller;
         public Transform player;
 
+        [Tooltip("The collider of the wall/floor this portal is attached to")]
+        public Collider surfaceCollider;
+
+        public void SetSurfaceCollider(Collider newSurface)
+        {
+            if (surfaceCollider != null)
+            {
+                foreach (var col in overlappingColliders)
+                {
+                    if (col != null)
+                        Physics.IgnoreCollision(col, surfaceCollider, false);
+                }
+            }
+
+            surfaceCollider = newSurface;
+
+            if (surfaceCollider != null)
+            {
+                foreach (var col in overlappingColliders)
+                {
+                    if (col != null)
+                        Physics.IgnoreCollision(col, surfaceCollider, true);
+                }
+            }
+        }
+
         // Track all overlapping objects currently inside this portal trigger
         private readonly HashSet<Collider> overlappingColliders = new HashSet<Collider>();
 
@@ -41,7 +67,7 @@ namespace PRTL
                 // Target crossed the portal threshold plane
                 if (dotProduct < 0f)
                 {
-                    TeleportObject(targetTransform, portalToTarget);
+                    TeleportObject(targetTransform, portalToTarget, col);
                     overlappingColliders.Remove(col);
                 }
 
@@ -49,7 +75,7 @@ namespace PRTL
             }
         }
 
-        private void TeleportObject(Transform target, Vector3 portalToTarget)
+        private void TeleportObject(Transform target, Vector3 portalToTarget, Collider targetCol)
         {
             //Define usefull quanties relating the two portals, these should really be above but I can't figure out how to make
             //Them accessible!
@@ -105,7 +131,7 @@ namespace PRTL
             }
 
 
-            // 3. Handle thrown objects / travellers separately
+            //Handle thrown objects / travellers separately
             else if (target.CompareTag("Traveller"))
             {
 
@@ -128,6 +154,21 @@ namespace PRTL
                 }
             }
 
+            // Re-enable collision with the entry portal's surface immediately
+            if (surfaceCollider != null && targetCol != null)
+            {
+                Physics.IgnoreCollision(targetCol, surfaceCollider, false);
+            }
+
+            // Immediately ignore the exit (reciever) portal's surface so you don't snag on arrival
+            if (reciever != null && targetCol != null)
+            {
+                PortalTeleporter receiverTeleporter = reciever.GetComponentInChildren<PortalTeleporter>();
+                if (receiverTeleporter != null && receiverTeleporter.surfaceCollider != null)
+                {
+                    Physics.IgnoreCollision(targetCol, receiverTeleporter.surfaceCollider, true);
+                }
+            }
 
             // Inform Unity's physics engine of manual position/rotation changes
             Physics.SyncTransforms();
@@ -136,17 +177,45 @@ namespace PRTL
 
         void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player") || other.CompareTag("Traveller"))
+            if (other.CompareTag("Player"))
             {
                 overlappingColliders.Add(other);
+
+                FPController fpController = other.GetComponentInParent<FPController>();
+                if (fpController != null)
+                    fpController.EnterPortal();
+
+                if (surfaceCollider != null)
+                    Physics.IgnoreCollision(other, surfaceCollider, true);
+            }
+            else if (other.CompareTag("Traveller"))
+            {
+                overlappingColliders.Add(other);
+
+                if (surfaceCollider != null)
+                    Physics.IgnoreCollision(other, surfaceCollider, true);
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Player") || other.CompareTag("Traveller"))
+            if (other.CompareTag("Player"))
             {
                 overlappingColliders.Remove(other);
+
+                FPController fpController = other.GetComponentInParent<FPController>();
+                if (fpController != null)
+                    fpController.ExitPortal();
+
+                if (surfaceCollider != null)
+                    Physics.IgnoreCollision(other, surfaceCollider, false);
+            }
+            else if (other.CompareTag("Traveller"))
+            {
+                overlappingColliders.Remove(other);
+
+                if (surfaceCollider != null)
+                    Physics.IgnoreCollision(other, surfaceCollider, false);
             }
         }
 
@@ -169,5 +238,6 @@ namespace PRTL
             }
             playerTransform.rotation = final;
         }
+
     }
 }

@@ -89,7 +89,7 @@ namespace PRTL
                 verticalVelocity.y = 0f;
             }
 
-            if (!Controller.Grounded) // Do not reset vertical velocity if the player is currently inside a portal trigger
+            if (!Controller.Grounded || Controller.IsInPortal) // Do not reset vertical velocity if the player is currently inside a portal trigger
             {
                 verticalVelocity += Physics.gravity * gravityScale * Time.deltaTime;
             }
