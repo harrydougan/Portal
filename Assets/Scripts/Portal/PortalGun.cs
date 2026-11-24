@@ -46,7 +46,8 @@ namespace PRTL
 
                 //Apply portal rotation
                 portal.rotation = Quaternion.LookRotation(hit.normal, upDirection); // Bc portals front face is Local Y
-
+                
+                //Setting Surface Collider of collider hit behind portal.
                 PortalTeleporter teleporter = portal.GetComponentInChildren<PortalTeleporter>();
                 if (teleporter != null)
                 {
