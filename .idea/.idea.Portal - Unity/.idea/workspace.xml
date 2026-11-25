@@ -11,75 +11,83 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68cf0a7c-0af7-4707-bcb6-d71dcc6d9455" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PortalLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PortalLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Portal/PortalGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Portal/PortalGun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Portal - Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Portal - Unity/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/ObjectPickup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/ObjectPickup.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/TempParent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/TempParent.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Systems/Doors/Door.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0000000000512894" />
-      <entry key="M2" value="1.0000210161854266" />
-      <entry key="M5" value="1.1555358618121885" />
-      <entry key="M10" value="6.747219741398559" />
-      <entry key="M15" value="22.550172964793536" />
-      <entry key="M30" value="88.97751178435638" />
-      <entry key="H1" value="186.29811310208382" />
-      <entry key="H2" value="273.33100228548096" />
-      <entry key="H4" value="332.29344591972625" />
-      <entry key="D1" value="391.79161973439807" />
-      <entry key="W1" value="403.0843889804326" />
+      <entry key="MS100" value="1.0000000000000002" />
+      <entry key="MS500" value="1.0006959747176998" />
+      <entry key="S2" value="1.2614991394735602" />
+      <entry key="S5" value="2.0799153039009974" />
+      <entry key="S10" value="2.7860260555786494" />
+      <entry key="S30" value="3.7366190805397985" />
+      <entry key="S60" value="5.706718912105203" />
+      <entry key="M2" value="10.786661432262193" />
+      <entry key="M5" value="29.185269884215547" />
+      <entry key="M10" value="63.56413182113862" />
+      <entry key="M15" value="94.23489933836508" />
+      <entry key="M30" value="176.01282667344051" />
+      <entry key="H1" value="294.4987939399607" />
+      <entry key="H2" value="411.0395067201792" />
+      <entry key="H4" value="495.70145555773763" />
+      <entry key="D1" value="585.4985097086741" />
+      <entry key="W1" value="603.0142267962738" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="7.43519915748632E-120" />
-      <entry key="S5" value="2.2310897570847864E-48" />
-      <entry key="S10" value="1.4936832854004848E-24" />
-      <entry key="S30" value="1.1431051298855718E-8" />
-      <entry key="S60" value="1.0691619321276242E-4" />
-      <entry key="M2" value="0.010372113544695909" />
-      <entry key="M5" value="0.28145349665743846" />
-      <entry key="M10" value="2.91138823681705" />
-      <entry key="M15" value="7.940826523068337" />
-      <entry key="M30" value="24.05018481711473" />
-      <entry key="H1" value="43.96573353429354" />
-      <entry key="H2" value="60.3946629208916" />
-      <entry key="H4" value="71.10880206306842" />
-      <entry key="D1" value="81.68024186227937" />
-      <entry key="W1" value="83.66412064304693" />
+      <entry key="MS500" value="2.9387192918757546E-206" />
+      <entry key="S2" value="4.1796895618706015E-52" />
+      <entry key="S5" value="3.2321358557647575E-21" />
+      <entry key="S10" value="7.380004342397151E-11" />
+      <entry key="S30" value="7.090724813327397E-4" />
+      <entry key="S60" value="0.04808610198881151" />
+      <entry key="M2" value="0.5224095946533338" />
+      <entry key="M5" value="3.531050762134211" />
+      <entry key="M10" value="8.636396364177568" />
+      <entry key="M15" value="13.445735010668626" />
+      <entry key="M30" value="28.322873045821602" />
+      <entry key="H1" value="50.615071161500644" />
+      <entry key="H2" value="72.07366506237321" />
+      <entry key="H4" value="87.37062075038008" />
+      <entry key="D1" value="103.37416460047983" />
+      <entry key="W1" value="106.47254552425947" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.145968933451652E-5" />
-      <entry key="MS500" value="0.14378648666882562" />
-      <entry key="S2" value="0.6157855847156626" />
-      <entry key="S5" value="0.8237051991401853" />
-      <entry key="S10" value="0.907582061931694" />
-      <entry key="S30" value="0.968193076837314" />
-      <entry key="S60" value="0.9840733919203896" />
-      <entry key="M2" value="1.002269334372514" />
-      <entry key="M5" value="1.432474868136025" />
-      <entry key="M10" value="9.645901244287517" />
-      <entry key="M15" value="30.46671926033193" />
-      <entry key="M30" value="112.98721568434857" />
-      <entry key="H1" value="230.22486716851546" />
-      <entry key="H2" value="333.6982145394726" />
-      <entry key="H4" value="403.3858928888957" />
-      <entry key="D1" value="473.46870015320775" />
-      <entry key="W1" value="486.7480462695309" />
+      <entry key="MS100" value="3.5299322018726926E-5" />
+      <entry key="MS500" value="0.1293789667140786" />
+      <entry key="S2" value="0.8595707296417961" />
+      <entry key="S5" value="1.89306854817386" />
+      <entry key="S10" value="2.6873397205186444" />
+      <entry key="S30" value="3.687014802404092" />
+      <entry key="S60" value="5.675049415351135" />
+      <entry key="M2" value="11.19673682748528" />
+      <entry key="M5" value="32.59827352578894" />
+      <entry key="M10" value="72.09927262350729" />
+      <entry key="M15" value="107.59123921366486" />
+      <entry key="M30" value="204.26126952717058" />
+      <entry key="H1" value="345.05500967597504" />
+      <entry key="H2" value="483.07327064702656" />
+      <entry key="H4" value="583.0483705766738" />
+      <entry key="D1" value="688.868065792462" />
+      <entry key="W1" value="709.4860957326531" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -96,12 +104,15 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Device#class com.jetbrains.rider.plugins.unity.run.devices.UnityEditorDeviceKind#com.jetbrains.rider.plugins.unity.run.devices.UnityDevicesProvider#Unity Attach To: Attach to&quot;: &quot;Unity Editor&quot;,
+    &quot;DeviceKind#com.jetbrains.rider.plugins.unity.run.devices.UnityDevicesProvider&quot;: &quot;Unity Editor&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Unity Attach To.Attach to.executor&quot;: &quot;Debug&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
@@ -113,7 +124,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;
   }
 }</component>
-  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+  <component name="RunManager" selected="Unity Attach To.Attach to">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Builds/Portal.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
