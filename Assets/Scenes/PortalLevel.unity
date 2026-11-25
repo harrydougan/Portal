@@ -21089,7 +21089,7 @@ GameObject:
   - component: {fileID: 1577234115}
   - component: {fileID: 1577234114}
   - component: {fileID: 1577234113}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Ground (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22501,10 +22501,10 @@ MonoBehaviour:
   testTransform: {fileID: 970303973}
   portableLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 3072
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 1537
+    m_Bits: 3585
   portalWidth: 2
   portalHeight: 3.8
   surfaceOffset: 0.05
