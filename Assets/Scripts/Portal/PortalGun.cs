@@ -43,10 +43,10 @@ namespace PRTL
         {
             Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
 
-            // 1. Cast against obstacleLayer so non-portable walls block the shot
+            //Cast against obstacleLayer so non-portable walls block the shot
             if (Physics.Raycast(ray, out RaycastHit hit, maxRange, obstacleLayer, QueryTriggerInteraction.Ignore))
             {
-                // 2. Check if the surface we hit is actually on portableLayer
+                //Check if the surface we hit is actually on portableLayer
                 bool isPortable = (portableLayer.value & (1 << hit.collider.gameObject.layer)) != 0;
 
                 if (isPortable)
@@ -173,7 +173,7 @@ namespace PRTL
             float halfWidth = portalWidth * 0.5f;
             float halfHeight = portalHeight * 0.5f;
 
-            // 1. Check all 4 corners to guarantee no overhangs remain
+            //Check all 4 corners to guarantee no overhangs remain
             Vector3[] corners = new Vector3[]
             {
                 new Vector3(-halfWidth, -halfHeight, 0),
@@ -194,7 +194,7 @@ namespace PRTL
                 }
             }
 
-            // 2. Check that the portal volume isn't clipping inside walls or the other active portal
+            // Check that the portal volume isn't clipping inside walls or the other active portal
             Vector3 halfExtents = new Vector3(halfWidth - 0.05f, halfHeight - 0.05f, 0.02f);
             Collider[] overlaps = Physics.OverlapBox(
                 testTransform.position,
