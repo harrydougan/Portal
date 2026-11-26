@@ -10,6 +10,7 @@ namespace PRTL
    
         [SerializeField] private int requiredSwitchesToOpen = 1;
         [SerializeField] private Animator doorAnimator;
+        [SerializeField] private AudioSource doorOpenSound;
    
         private List<PressureSwitch> currentSwitchesOpen = new();
         
@@ -51,6 +52,8 @@ namespace PRTL
             if (!IsDoorOpen)
             {
                 doorAnimator.SetBool("Down", true);
+                doorOpenSound.Play();
+                
             }
             IsDoorOpen = true;
         }

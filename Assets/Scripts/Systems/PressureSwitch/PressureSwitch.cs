@@ -7,18 +7,25 @@ namespace PRTL
     public class PressureSwitch : MonoBehaviour
     {
         [SerializeField] private Door currentDoor;
-        //[SerializeField] private Animator animator;
+        [SerializeField] private Animator animator;
+        [SerializeField] private AudioSource buttonSound;
 
+        private void OnTriggerEnter(Collider other)
+        {
+            buttonSound.Play();
+        }
+        
         private void OnTriggerStay(Collider other)
         {
             currentDoor.AddPressureSwitch(this);
-            //animator.SetBool(Down, true)
+            animator.SetBool("Down", true);
+            
         }
 
         private void OnTriggerExit(Collider other)
         {
             currentDoor.RemovePressureSwitch(this);
-            //animator.SetBool(Down, false)
+            animator.SetBool("Down", false);
         }
     }
     
