@@ -12,42 +12,11 @@
   <component name="ChangeListManager">
     <list default="true" id="68cf0a7c-0af7-4707-bcb6-d71dcc6d9455" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Portal - Unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Portal - Unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Door/Door.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Door/Door.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Door/DoorDown.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Door/DoorDown.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Door/DoorUp.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Door/DoorUp.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Cube_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Cube_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground_Green.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground_Green.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground_Red.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground_Red.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground_Test.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground_Test.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/PortalOriginal.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/PortalOriginal/CameraMat_A.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/PortalOriginal/CameraMat_A.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/PortalOriginal/CameraMat_B.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/PortalOriginal/CameraMat_B.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/PortalOriginal/M_PortalBorderBlue 1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/PortalOriginal/M_PortalBorderBlue 1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/PortalOriginal/M_PortalBorderBlue.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/PortalOriginal/M_PortalBorderBlue.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/PortalOriginal/ScreenCutoutShader.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/PortalOriginal/ScreenCutoutShader.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall_Green 1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall_Green 1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall_Green 2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall_Green 2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall_Green.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall_Green.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall_Red.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall_Red.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall_Red_Pillar 2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall_Red_Pillar 2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall_Red_Pillar.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall_Red_Pillar.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Doors/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Doors/Door.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/PressureSwitch/PressureSwitch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/PressureSwitch/PressureSwitch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PortalLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PortalLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/FPResetSafePosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/FPResetSafePosition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Plugins/lib_burst_generated.wasm" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Plugins/lib_burst_generated.wasm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,60 +35,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000037493420988" />
-      <entry key="S2" value="1.1978779242381417" />
-      <entry key="S5" value="2.9678542123210674" />
-      <entry key="S10" value="5.37285536486311" />
-      <entry key="S30" value="8.561230192322014" />
-      <entry key="S60" value="9.710153898015118" />
-      <entry key="M2" value="10.809189785210473" />
-      <entry key="M5" value="14.334907121653558" />
-      <entry key="M10" value="17.959212356014906" />
-      <entry key="M15" value="19.809899173105975" />
-      <entry key="M30" value="23.2986725839935" />
-      <entry key="H1" value="47.64683861232439" />
-      <entry key="H2" value="141.974842465821" />
-      <entry key="H4" value="289.92546445321005" />
-      <entry key="D1" value="552.508791008884" />
-      <entry key="W1" value="619.0972702993004" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000002061624" />
+      <entry key="S5" value="1.000133562257136" />
+      <entry key="S10" value="1.01155691382402" />
+      <entry key="S30" value="1.2260978118178634" />
+      <entry key="S60" value="1.4849868536154145" />
+      <entry key="M2" value="2.027619378624632" />
+      <entry key="M5" value="5.446737283484976" />
+      <entry key="M10" value="10.909423875546585" />
+      <entry key="M15" value="14.43245704029553" />
+      <entry key="M30" value="20.468696889219935" />
+      <entry key="H1" value="44.43734610618975" />
+      <entry key="H2" value="136.00204993442253" />
+      <entry key="H4" value="283.67066824490587" />
+      <entry key="D1" value="551.8557741548933" />
+      <entry key="W1" value="620.671723095681" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.1214195823849272E-65" />
-      <entry key="MS500" value="1.0231837334157614E-13" />
-      <entry key="S2" value="5.655726592747276E-4" />
-      <entry key="S5" value="0.05023372256609265" />
-      <entry key="S10" value="0.2241288079790117" />
-      <entry key="S30" value="0.6074346788747653" />
-      <entry key="S60" value="0.7800856345883591" />
-      <entry key="M2" value="0.9093771093857129" />
-      <entry key="M5" value="1.1855981446995618" />
-      <entry key="M10" value="1.45935530351842" />
-      <entry key="M15" value="1.6005537435560278" />
-      <entry key="M30" value="1.9676496841185576" />
-      <entry key="H1" value="6.036224675440339" />
-      <entry key="H2" value="22.58759400387594" />
-      <entry key="H4" value="48.73405727130172" />
-      <entry key="D1" value="95.14227386576279" />
-      <entry key="W1" value="106.89905241194894" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="2.915495143146632E-94" />
+      <entry key="S5" value="3.853762344743306E-38" />
+      <entry key="S10" value="1.9631001871385246E-19" />
+      <entry key="S30" value="5.811851515557401E-7" />
+      <entry key="S60" value="7.630442854722613E-4" />
+      <entry key="M2" value="0.02844118910577923" />
+      <entry key="M5" value="0.29649611270167175" />
+      <entry key="M10" value="0.7297965183316638" />
+      <entry key="M15" value="1.0083951752676743" />
+      <entry key="M30" value="1.5618093877641328" />
+      <entry key="H1" value="5.377810822006116" />
+      <entry key="H2" value="21.32013916596675" />
+      <entry key="H4" value="47.34701460730807" />
+      <entry key="D1" value="94.68551199176025" />
+      <entry key="W1" value="106.82558623568745" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.815705922674011E-7" />
-      <entry key="MS500" value="0.04897222760910019" />
-      <entry key="S2" value="0.6638237010518981" />
-      <entry key="S5" value="2.69707473547195" />
-      <entry key="S10" value="5.354779375283049" />
-      <entry key="S30" value="9.04161850143586" />
-      <entry key="S60" value="10.417024730419282" />
-      <entry key="M2" value="11.675521381674463" />
-      <entry key="M5" value="15.492693505822574" />
-      <entry key="M10" value="19.39901053493325" />
-      <entry key="M15" value="21.395477674484486" />
-      <entry key="M30" value="25.257123783359077" />
-      <entry key="H1" value="53.67352569523632" />
-      <entry key="H2" value="164.54855419959588" />
-      <entry key="H4" value="338.6455823502583" />
-      <entry key="D1" value="647.6467001551728" />
-      <entry key="W1" value="725.99562572486" />
+      <entry key="MS100" value="0.4537595776585804" />
+      <entry key="MS500" value="0.8538177143912449" />
+      <entry key="S2" value="0.9612609285890085" />
+      <entry key="S5" value="0.984452484329665" />
+      <entry key="S10" value="1.0036190798526006" />
+      <entry key="S30" value="1.2230294060516862" />
+      <entry key="S60" value="1.4839009762826412" />
+      <entry key="M2" value="2.053721532391692" />
+      <entry key="M5" value="5.735847578053902" />
+      <entry key="M10" value="11.629218465580117" />
+      <entry key="M15" value="15.431268021220356" />
+      <entry key="M30" value="22.023129585378445" />
+      <entry key="H1" value="49.8066217449863" />
+      <entry key="H2" value="157.30906679286292" />
+      <entry key="H4" value="331.00413069472705" />
+      <entry key="D1" value="646.5369407933415" />
+      <entry key="W1" value="727.4966125970657" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">

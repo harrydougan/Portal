@@ -70,7 +70,7 @@ namespace PRTL
 
         private void Update()
         {
-           if (Root.position.y <= -5f && state == EState.Idle) // Change for level of death floor on Y
+           if (Root.position.y <= -14.5f && state == EState.Idle) // Change for level of death floor on Y
             {
                 ChangeState(EState.Transition);
             }
